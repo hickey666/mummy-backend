@@ -1,0 +1,52 @@
+syntax = "v1"
+
+type CategoryListRequest {
+}
+
+type CategoryListResponse {
+	List []Category `json:"categories"`
+}
+
+type Category {
+	Name string `json:"name"`
+}
+
+type CategoryCreateRequest {
+	Name string `json:"name"`
+}
+
+type CategoryCreateResponse {
+}
+
+type CategoryUpdateRequest {
+	ID   int    `json:"id"`
+	Name string `json:"name"`
+}
+
+type CategoryUpdateResponse {
+}
+
+type CategoryDeleteRequest {
+	ID int `json:"id"`
+}
+
+type CategoryDeleteResponse {
+}
+
+@server (
+	prefix: category
+	group:  category
+)
+service mummystorage-api {
+	@handler CategoryListHandler
+	get /list (CategoryListRequest) returns (CategoryListResponse)
+
+	@handler CategoryCreateHandler
+	post /create (CategoryCreateRequest) returns (CategoryCreateResponse)
+
+	@handler CategoryUpdateHandler
+	post /update (CategoryUpdateRequest) returns (CategoryUpdateResponse)
+
+	@handler CategoryDeleteHandler
+	post /delete (CategoryDeleteRequest) returns (CategoryDeleteResponse)
+}

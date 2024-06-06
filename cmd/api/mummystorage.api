@@ -1,0 +1,11 @@
+syntax = "v1"
+
+import (
+	// 全局共用结构体
+	// "desc/common.api"
+	// 产品模块
+	"desc/product/product.api"
+	// 分类模块
+	"desc/category/category.api"
+)
+

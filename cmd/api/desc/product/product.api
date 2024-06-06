@@ -1,0 +1,22 @@
+syntax = "v1"
+
+type ProductListRequest {
+}
+
+type ProductListResponse {
+	List []Product `json:"products"`
+}
+
+type Product {
+	Name  string  `json:"name"`
+	Price float64 `json:"price"`
+}
+
+@server (
+	prefix: product
+	group:  product
+)
+service mummystorage-api {
+	@handler ProductListHandler
+	get /list (ProductListRequest) returns (ProductListResponse)
+}
